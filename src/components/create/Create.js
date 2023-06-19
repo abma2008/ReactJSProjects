@@ -18,7 +18,7 @@ const Create = () => {
         }
         else {
             // axios.post(`https://648eab6875a96b6644442670.mockapi.io/users`,
-            axios.post(`http://localhost:4000/users`,
+            axios.post(`https://648eab6875a96b6644442670.mockapi.io/users`,
                 { firstname: firstname, lastname: lastname, email: email })
                 .then((result) => {
                     if (result.status === 201) {

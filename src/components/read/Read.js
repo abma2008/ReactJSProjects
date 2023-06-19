@@ -9,8 +9,8 @@ const Read = () => {
     const [showData, setShowData] = useState([])
     const [check, setCheck] = useState(0);
     useEffect(() => {
-        // axios.get(`https://648eab6875a96b6644442670.mockapi.io/users`)
-        axios.get(`http://localhost:4000/users`)
+        axios.get(`https://648eab6875a96b6644442670.mockapi.io/users`)
+            // axios.get(`http://localhost:4000/users`)
             .then((response) => {
                 setShowData(response.data);
                 if (response.data.length) {
@@ -20,14 +20,14 @@ const Read = () => {
     }, [])
     // creating deleteAllButton:
     const deleteAllButton = () => {
-        axios.get(`http://localhost:4000/users`)
+        axios.get(`https://648eab6875a96b6644442670.mockapi.io/users`)
             .then(response => {
                 return response.data
             })
             .then(data => {
                 if (data.length) {
                     data.map(item => {
-                        axios.delete(`http://localhost:4000/users/${item.id}`)
+                        axios.delete(`https://648eab6875a96b6644442670.mockapi.io/users/${item.id}`)
 
                     })
                     alert(`All records have been deleted`);
@@ -47,7 +47,7 @@ const Read = () => {
     }
     // This is the delete Button:
     const deleteButton = (e) => {
-        axios.delete(`http://localhost:4000/users/${e.target.id}`)
+        axios.delete(`https://648eab6875a96b6644442670.mockapi.io/users/${e.target.id}`)
             .then(response => {
                 return response
             }).then(response => {

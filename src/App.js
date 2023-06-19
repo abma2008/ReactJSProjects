@@ -3,7 +3,7 @@ import Create from "./components/create/Create";
 import Read from "./components/read/Read";
 import Update from "./components/update/Update";
 import Delete from "./components/delete/Delete";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import NavHeader from "./components/NavHeader";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

@@ -18,7 +18,7 @@ const Update = () => {
     }, [])
     // setting the function that will update the item:
     const updateItem = () => {
-        axios.put(`http://localhost:4000/users/${id}`, { firstname: firstname, lastname: lastname, email: email })
+        axios.put(`https://648eab6875a96b6644442670.mockapi.io/users/${id}`, { firstname: firstname, lastname: lastname, email: email })
             .then(response => {
                 return response;
             }).then(response => {
