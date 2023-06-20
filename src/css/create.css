@@ -1,0 +1,24 @@
+.form-data {
+    background-color: linear-gradient(black, white);
+    color: #000000;
+    transition:2s;
+    box-shadow: 10px 10px 10px 10px;
+    padding:20px;
+    width:75%;
+    margin-top:20px;
+    border-radius: 20px;
+    border: 4px solid bisque;
+    color: coral;
+    font-weight:bolder;
+}
+.form-data h1 {
+    color:black;
+}
+.form-data label {
+    color:black;
+}
+.form-data input:focus{
+    background-color:blanchedalmond;
+    color: black;
+    outline: 3px solid brown;
+}

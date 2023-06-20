@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Button, Form, FormLabel } from 'react-bootstrap';
+import '../../css/create.css';
 
 
 
@@ -18,7 +19,7 @@ const Create = () => {
         }
         else {
             // axios.post(`https://648eab6875a96b6644442670.mockapi.io/users`,
-            axios.post(`https://648eab6875a96b6644442670.mockapi.io/users`,
+            axios.post(`http://localhost:4000/users`,
                 { firstname: firstname, lastname: lastname, email: email })
                 .then((result) => {
                     if (result.status === 201) {
@@ -36,7 +37,9 @@ const Create = () => {
     }
     return (
         <>
-            <Form className='w-50 m-auto' method='POST' action='/read' autoComplete='off'>
+            <Form className='mt-4 m-auto form-data' method='POST' action='/read' autoComplete='off'>
+                <h1>Applicants Form Registration</h1>
+                <hr />
                 <FormLabel>First Name:</FormLabel>
                 <Form.Control type='text' name='firstname' onChange={(e) => setFirstname(e.target.value)} required></Form.Control>
                 <Form.Label>Last Name:</Form.Label>

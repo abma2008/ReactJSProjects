@@ -9,7 +9,8 @@ const Read = () => {
     const [showData, setShowData] = useState([])
     const [check, setCheck] = useState(0);
     useEffect(() => {
-        axios.get(`https://648eab6875a96b6644442670.mockapi.io/users`)
+        // https://648eab6875a96b6644442670.mockapi.io/users
+        axios.get(`http://localhost:4000/users`)
             // axios.get(`http://localhost:4000/users`)
             .then((response) => {
                 setShowData(response.data);
@@ -20,34 +21,35 @@ const Read = () => {
     }, [])
     // creating deleteAllButton:
     const deleteAllButton = () => {
-        axios.get(`https://648eab6875a96b6644442670.mockapi.io/users`)
+        // https://648eab6875a96b6644442670.mockapi.io/users
+        axios.get(`http://localhost:4000/users`)
             .then(response => {
                 return response.data
             })
             .then(data => {
-                if (data.length) {
-                    data.map(item => {
-                        axios.delete(`https://648eab6875a96b6644442670.mockapi.io/users/${item.id}`)
 
-                    })
-                    alert(`All records have been deleted`);
-                    window.location.href = `/read`
+                data.map(item => {
+                    // https://648eab6875a96b6644442670.mockapi.io
+                    axios.delete(`http://localhost:4000/users/${item.id}`)
 
-                }
-
+                })
+                alert(`All records have been deleted`);
+                window.location.href = `/read`
 
             })
     }
     // Update Button:
     const updateButton = (e) => {
-        localStorage.setItem(`id`, e.target.id)
+        localStorage.setItem(`id`, e.target.getAttribute(`id`))
         localStorage.setItem(`firstname`, e.target.getAttribute(`data-first`))
         localStorage.setItem(`lastname`, e.target.getAttribute(`data-last`))
         localStorage.setItem(`email`, e.target.getAttribute(`data-email`))
     }
     // This is the delete Button:
     const deleteButton = (e) => {
-        axios.delete(`https://648eab6875a96b6644442670.mockapi.io/users/${e.target.id}`)
+
+        // https://648eab6875a96b6644442670.mockapi.io/users/
+        axios.delete(`http://localhost:4000/users/${e.target.id}`)
             .then(response => {
                 return response
             }).then(response => {
@@ -57,12 +59,14 @@ const Read = () => {
     }
     return (
         <>
-            <Link to='/create'>
-                <Button variant='secondary m-2'>Go Back</Button>
-            </Link>
-            <Link to='/read'>
-                <Button onClick={deleteAllButton} className='btn btn-danger'>Delete All</Button>
-            </Link>
+            <div className='d-flex justify-content-evenly m-auto bg-secondary'>
+                <Link to='/create'>
+                    <Button variant='primary m-2'>Go Back</Button>
+                </Link>
+                <Link to='/read'>
+                    <Button variant='danger m-2' onClick={deleteAllButton}>Delete All</Button>
+                </Link>
+            </div>
             {
                 check ? (
                     <div style={{ overflowX: `auto`, padding: `10px` }}>
@@ -81,20 +85,24 @@ const Read = () => {
                                 {
                                     showData.map((item, index) => {
                                         return (
-                                            <tr id={index}>
+                                            <tr key={index}>
                                                 <td>{item.id}</td>
                                                 <td id='firstname'>{item.firstname}</td>
                                                 <td id='lastname'>{item.lastname}</td>
                                                 <td id='email'>{item.email}</td>
                                                 <td>
                                                     <Link to='/update'>
-                                                        <Button variant='info' id={item.id} data-first={item.firstname} data-last={item.lastname} data-email={item.email} onClick={updateButton}>Update</Button>
+                                                        <Button variant='warning' id={item.id} data-first={item.firstname} data-last={item.lastname} data-email={item.email} onClick={updateButton}>
+                                                            <i className='fa fa-edit fa-lg'></i>
+                                                        </Button>
                                                     </Link>
 
                                                 </td>
                                                 <td>
                                                     <Link to=''>
-                                                        <Button variant='danger' id={item.id} data-first={item.firstname} data-last={item.lastname} data-email={item.email} onClick={deleteButton}>Delete</Button>
+                                                        <Button variant='danger' id={item.id} data-first={item.firstname} data-last={item.lastname} data-email={item.email} onClick={deleteButton}>
+                                                            <i className='fa fa-trash fa-lg'></i>
+                                                        </Button>
                                                     </Link>
                                                 </td>
                                             </tr>

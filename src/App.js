@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <div><NavHeader /></div>
-      {/* we will be adding a content of the page here */}
 
       <BrowserRouter>
         <Routes>
